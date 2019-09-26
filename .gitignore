@@ -2,3 +2,6 @@
 .DS_Store
 .idea/
 venv/
+src/.*
+src/__pycache__
+data_notes.txt
