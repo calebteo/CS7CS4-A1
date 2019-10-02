@@ -11,9 +11,17 @@ def ReadInData(file):
     return dataset
 
 
+def clean(df):
+    df = df.drop("Gender", axis=1)
+    df = df.drop("University Degree", axis=1)
+    df = df.drop("Hair Color", axis=1)
+    return df
+
+
 def main():
     print('Starting Assignment 1')
     trainingData = ReadInData("../data/tcd ml 2019-20 income prediction training (with labels).csv")
+    trainingData = clean(trainingData)
     print(trainingData.shape)
     print(trainingData.describe())
 
