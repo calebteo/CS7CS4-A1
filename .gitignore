@@ -6,3 +6,4 @@ src/.*
 src/__pycache__
 data_notes.txt
 data/processedData.csv
+data/processedData2.csv
