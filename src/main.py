@@ -11,17 +11,38 @@ def ReadInData(file):
     return dataset
 
 
-def clean(df):
+def DropHeadings(df):
     df = df.drop("Gender", axis=1)
     df = df.drop("University Degree", axis=1)
     df = df.drop("Hair Color", axis=1)
+    return df
+
+def FillInMissingData(df):
+    averageAge = int(df['Age'].mean())
+    averageRecord = (df['Year of Record'].mean())
+
+    print(str(averageAge))
+    print(str(averageRecord))
+
+    ## Fill in Missing Data with average
+    df['Age'] = df['Age'].fillna(averageAge)
+    df['Year of Record'] = df['Year of Record'].fillna(round(averageRecord))
+    df['Profession'] = df['Profession'].fillna('No')
+
+    return df
+
+
+def HandleMissingData(df):
+    df = FillInMissingData(df)
+    df = DropHeadings(df)
+    df.describe()
     return df
 
 
 def main():
     print('Starting Assignment 1')
     trainingData = ReadInData("../data/tcd ml 2019-20 income prediction training (with labels).csv")
-    trainingData = clean(trainingData)
+    trainingData = DropHeadings(trainingData)
     print(trainingData.shape)
     print(trainingData.describe())
 
