@@ -38,6 +38,15 @@ def HandleMissingData(df):
     df.describe()
     return df
 
+def PrepTestForModel(training_df, test_df):
+    countries = training_df['Country'].unique()
+    professions = training_df['Profession'].unique()
+
+    for i in test_df['Country']:
+        if i in countries:
+            # Write output
+            print(i)
+
 
 def main():
     print('Starting Assignment 1')
