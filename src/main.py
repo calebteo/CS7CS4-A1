@@ -15,6 +15,7 @@ def DropHeadings(df):
     df = df.drop("Gender", axis=1)
     df = df.drop("University Degree", axis=1)
     df = df.drop("Hair Color", axis=1)
+    df = df.drop("Instance", axis=1)
     return df
 
 def FillInMissingData(df):
