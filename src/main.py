@@ -39,14 +39,31 @@ def HandleMissingData(df):
     df.describe()
     return df
 
-def PrepTestForModel(training_df, test_df):
-    countries = training_df['Country'].unique()
-    professions = training_df['Profession'].unique()
 
-    for i in test_df['Country']:
-        if i in countries:
+def MapColVarToModelInputs(training_df, test_df, colVar):
+    colVar_columns = training_df[colVar].unique()
+    colVar_columns.sort()
+
+    count = 0
+    array = [0] * len(colVar_columns)
+
+    zero_array = np.zeros((len(test_df[colVar]), len(colVar_columns)))
+    outputDf = pd.DataFrame(data=zero_array, columns=colVar_columns)
+
+    for i in test_df[colVar]:
+        outputDf.loc[count] = array
+        if i in colVar_columns:
             # Write output
-            print(i)
+            outputDf.loc[count, i] = 1
+
+        count = count + 1
+
+    return outputDf
+
+
+def PrintOutNaN(df):
+    null_counts = df.isnull().sum()
+    print("Number of null values in each column:\n{}".format(null_counts))
 
 
 def main():
