@@ -28,7 +28,7 @@ def FillInMissingData(df):
     ## Fill in Missing Data with average
     df['Age'] = df['Age'].fillna(averageAge)
     df['Year of Record'] = df['Year of Record'].fillna(round(averageRecord))
-    df['Profession'] = df['Profession'].fillna('No')
+    df['Profession'] = df['Profession'].fillna('No_P')
     df['Gender'] = df['Gender'].fillna('unknown')
     df['University Degree'] = df['University Degree'].fillna('No')
 
