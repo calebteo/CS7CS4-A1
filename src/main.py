@@ -31,6 +31,7 @@ def FillInMissingData(df):
     df['Profession'] = df['Profession'].fillna('No_P')
     df['Gender'] = df['Gender'].fillna('unknown')
     df['University Degree'] = df['University Degree'].fillna('No')
+    df['University Degree'] = df['University Degree'].replace(['0'], 'No')
 
     return df
 
