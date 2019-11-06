@@ -69,6 +69,10 @@ def PrintOutNaN(df):
     print("Number of null values in each column:\n{}".format(null_counts))
 
 
+def PrintStatus(status):
+    print('|---' + str(status) + '---|')
+
+
 def main():
     print('Starting Assignment 1')
     trainingData = ReadInData("../data/tcd ml 2019-20 income prediction training (with labels).csv")
@@ -82,7 +86,7 @@ def main():
 
     print(trainingData.shape)
     print(trainingData.iloc[820])
-
+    
 
 if __name__ == '__main__':
     main()
